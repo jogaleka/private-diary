@@ -6,7 +6,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/diary")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://write-your-mind.onrender.com"
+})
 public class DiaryController {
 
     private final DiaryService diaryService;
