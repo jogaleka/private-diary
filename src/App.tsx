@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:8080";
+
 type DiaryEntry = {
   id: number;
   title: string;
@@ -39,7 +42,7 @@ function App() {
     setMessage("Logging in...");
 
     try {
-      const response = await fetch("http://localhost:8080/api/auth/login", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,7 +73,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/auth/register",
+        `${API_BASE_URL}/api/auth/register`,
         {
           method: "POST",
           headers: {
@@ -98,7 +101,7 @@ function App() {
 
   const loadEntries = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/diary", {
+      const response = await fetch(`${API_BASE_URL}/api/diary`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -127,7 +130,7 @@ function App() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/diary", {
+      const response = await fetch(`${API_BASE_URL}/api/diary`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -167,7 +170,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/diary/${editingId}`,
+        `${API_BASE_URL}/api/diary/${editingId}`,
         {
           method: "PUT",
           headers: {
@@ -211,7 +214,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/diary/${id}`,
+        `${API_BASE_URL}/api/diary/${id}`,
         {
           method: "DELETE",
           headers: {
