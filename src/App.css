@@ -65,6 +65,8 @@ button {
   border-radius: 10px;
   outline: none;
   background: #fff;
+  color: #222;
+  -webkit-text-fill-color: #222;
 }
 
 .input:focus {
